@@ -7,6 +7,8 @@ describe "Associations" do
 
   after do
     Owner.all.clear
+    Dog.reset_all
+    Cat.reset_all
   end
 
   context 'Owner instance methods' do
