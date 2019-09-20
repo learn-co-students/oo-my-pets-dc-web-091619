@@ -16,7 +16,7 @@ class Owner
   end
 
   def say_species
-    "I am a human."
+    "I am a #{self.species}."
   end
 
   def self.all 
@@ -33,8 +33,6 @@ class Owner
 
   def cats
     #Cat.all #this will give us the total array of cats
-
-    #self.name #this will give us the name of the owner
     
     Cat.all.select {|cat| cat.owner == self}
 
