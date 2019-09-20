@@ -44,8 +44,17 @@ class Owner
     # could also do @@all = [] but not good practice to reference class vars directly in case class var name changes
   end
 
+# instance methods
+
   def cats
     Cat.all.select{|cat| cat.owner == self }
+    # need to find all cats that belong to this owner instance
+    # call upon the cat class var @@all
+    # iterate over that var via select method...and not find, which returns first instance only, or map, which returns the same, original array elements
+    # select filters and returns a new array with desired elements
+    # cat.owner == self  --- cat.owner is an owner instance, and self is referring to owner class (since we're in the owner class)
+    # comparing cat's owner instance to the owner instance to see if the particular cat appears in the owner instance
+    # array will pull that match
   end
 
   def dogs
