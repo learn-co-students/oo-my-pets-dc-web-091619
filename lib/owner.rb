@@ -1,25 +1,26 @@
-require 'pry'
-
 class Owner
   attr_reader :name, :species
+  # attr_reader only gets a instance,
+  # but doesn't make a writter so it cannot be overwritted
   @@all = []
 
   def initialize(name)
     @name = name
     @species = "human"
-    @@all << self
+    @@all << self              # self is an instance object here
   end
 
   def say_species
-    "I am a #{self.species}."
-  end
+    "I am a #{self.species}."  # we used self.species here because if you do just
+  end                          # @species then it will not go throught the
+                               # customized writter
 
   def self.all
     @@all
   end
 
   def self.count
-    @@all.length
+    @@all.length  # could do self.all.length as well
   end
 
   def self.reset_all
@@ -54,7 +55,6 @@ class Owner
     self.dogs.each {|ele| 
     ele.mood = "nervous"
     ele.owner = nil
-    binding.pry
   }
     self.cats.each {|ele| 
     ele.mood = "nervous"

@@ -1,3 +1,7 @@
+require_relative "./owner.rb"
+# for now we don't need this 
+# because it is set up for the environment, but later we will need this
+
 class Cat
   attr_accessor :owner, :mood
   attr_reader :name
