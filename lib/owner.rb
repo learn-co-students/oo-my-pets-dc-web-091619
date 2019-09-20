@@ -15,16 +15,17 @@ class Owner
     "I am a human."
   end
 
-  def self.all
+  def self.all #why not just all without self like in the dogs/cats?
     @@all
   end
 
   def self.count
-    @@all.count
+    self.all.count #this calls the self.all method above and returns the count.
   end
 
   def self.reset_all
-    @@all=[]
+    #@@all=[]
+    self.all.clear #use self.all for one single point of truth.  .clear is easier to read and defines a purpose.
   end
 
   def cats 
@@ -56,6 +57,7 @@ class Owner
   end
 
   def sell_pets
+    binding.pry
     self.dogs.each do |dog|
       dog.mood = "nervous"
       dog.owner = nil
