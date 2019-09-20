@@ -27,12 +27,12 @@ class Owner
   
   def cats
     Cat.all.select{|cat|
-      cat if cat.owner == self}
+      cat.owner == self}
   end
   
   def dogs
     Dog.all.select{|dog|
-      dog if dog.owner == self}
+      dog.owner == self}
   end
 
   def buy_cat(cat_name)
