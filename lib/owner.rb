@@ -1,13 +1,21 @@
 require "pry"
 
+
+# create and build out owner class since dog and cat depend on it
+
 class Owner
   
+  # setting class variable
   @@all = []
+
+  # reader exposes instance vars but can't override them; shortcut so don't have to write an explicit getter method below
+  # writer exposes and allows instance vars to be overwritten later
+  # accessor combines both
 
   attr_reader :name, :species
   attr_accessor :count
   
-
+# instance vars created so new instance has these when first created 
   def initialize(name)
     @name = name
     @species = "human"
@@ -16,24 +24,28 @@ class Owner
   end
 
   def say_species 
-    p "I am a #{@species}."
+    p "I am a #{self.species}."
+    # interpolate @species instance var
+    # could also have interpolated #{@species} but better to use self.species method
   end
 
+  # class methods denoted by "self"
   def self.all
    @@all
   end
  
   def self.count
     self.all.count
+      # could also do @@all.length -or- self.all.length
   end
 
   def self.reset_all
     self.all.clear
+    # could also do @@all = [] but not good practice to reference class vars directly in case class var name changes
   end
 
   def cats
-    Cat.all.select{|cat| 
-      cat.owner == self }
+    Cat.all.select{|cat| cat.owner == self }
   end
 
   def dogs
